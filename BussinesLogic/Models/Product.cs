@@ -37,5 +37,10 @@ namespace BussinesLogic.Models
 
             Console.WriteLine("SomeLogic from GetPriceFromDiscount");
         }
+
+        public override string ToString()
+        {
+            return $"{Name} from brand {Brand}\nIn category {CategoryOfProduct.Name}\nPrice {Price}";
+        }
     }
 }
