@@ -3,7 +3,7 @@
     public class Discount
     {
         private (DateTime from, DateTime to) _durationTuple; // check is null in isValid 
-        public string? Name { get; set; }
+        public string Name { get; set; }
         public int Percantage { get; set; }
         public bool  IsValid
         { 
@@ -21,6 +21,25 @@
                 }
                 _durationTuple = value;
             }
+        }
+
+        public Discount((DateTime from, DateTime to) durationTuple, string name, int percantage)
+        {
+            if (IsValid)
+                throw new ArgumentException("_durationTuble values cant be equal");
+
+            else if (durationTuple.to < durationTuple.from)
+                throw new ArgumentException("_durationTuble value Datetime from, cant be more then Datetime to");
+
+            else if (String.IsNullOrEmpty(name))
+                throw new ArgumentException("Name cant be null or empty");
+
+            else if (percantage <= 0)
+                throw new ArgumentException("Percentage cant be less or equal to zero");
+
+            _durationTuple = durationTuple;
+            Name = name;
+            Percantage = percantage;
         }
     }
 }
