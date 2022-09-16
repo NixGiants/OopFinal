@@ -8,9 +8,9 @@ namespace BussinesLogic.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public List<IPaymentMethod>? PaymentMethods{ get; set; }
-        protected string Login { get; set; }
-        protected string Password { get; set; }
-        protected Access Access { get; set; }
+        public string Login { get; set; }
+        public string Password { get; set; }
+        public Access Access { get; set; }
 
         public Credentials(string firstName, string lastName, List<IPaymentMethod>? paymentMethods, string? login, string? password, Access access)
         {
