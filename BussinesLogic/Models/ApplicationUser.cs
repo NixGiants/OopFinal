@@ -13,7 +13,7 @@ namespace BussinesLogic.Models
 
         public override string ToString()
         {
-            string res = $"User login: {this.Login}\n With full name {this.FirstName} {this.LastName}";
+            string res = $"User login: {this.Login}\nWith full name {this.FirstName} {this.LastName}";
             return res;
         }
     }
