@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BussinesLogic.Models
+﻿namespace BussinesLogic.Models
 {
     public class Discount
     {
@@ -13,7 +7,7 @@ namespace BussinesLogic.Models
         public int Percantage { get; set; }
         public bool  IsValid
         { 
-            get => _durationTuple.to.Equals(_durationTuple.to) ? false : true;
+            get => _durationTuple.to.Equals(_durationTuple.from) ? false : true;
         }
         public (DateTime from, DateTime to) DurationTuple {
             
