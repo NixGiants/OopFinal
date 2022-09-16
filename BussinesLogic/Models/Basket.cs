@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace BussinesLogic.Models
 {
     public class Basket
@@ -25,6 +20,12 @@ namespace BussinesLogic.Models
                 return 0;
             }
         }
+
+        public Basket(List<Product> products)
+        {
+            _products = products;
+        }
+
         public bool AddProduct(Product product)
         {
             if (!product.IsAvailable) return false;
