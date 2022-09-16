@@ -43,8 +43,7 @@ namespace BussinesLogic.Models
             string res = "";
             foreach (Product pr in _products)
             {
-                res += $"\n{pr}";
-
+                res += $"\n{pr}\n";
             }
             res +="Total price =\t"+TotalPrice;
             return res;
