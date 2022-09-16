@@ -16,5 +16,17 @@ namespace BussinesLogic.Models
             PaymentInfo = paymentInfo;
             ShipmentInfo = shipmentInfo;
         }
+
+        public void PayForOrder()
+        {
+            Console.WriteLine("Success Payment");
+        } 
+
+        public override string ToString()
+        {
+            string res = "";
+            res += $"{UserInOrder}\n{BasketInOrder}";
+            return res;
+        }
     }
 }
