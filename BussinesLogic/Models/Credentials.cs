@@ -8,8 +8,23 @@ namespace BussinesLogic.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public List<IPaymentMethod>? PaymentMethods{ get; set; }
-        protected string? Login { get; set; }
-        protected string? Password { get; set; }
+        protected string Login { get; set; }
+        protected string Password { get; set; }
         protected Access Access { get; set; }
+
+        public Credentials(string firstName, string lastName, List<IPaymentMethod>? paymentMethods, string? login, string? password, Access access)
+        {
+            if (String.IsNullOrEmpty(firstName) || String.IsNullOrEmpty(lastName) || String.IsNullOrEmpty(login) || String.IsNullOrEmpty(password))
+            {
+                throw new ArgumentException("Fullname and login with password cant be null or empty");
+            }
+
+            FirstName = firstName;
+            LastName = lastName;
+            PaymentMethods = paymentMethods;
+            Login = login;
+            Password = password;
+            Access = access;
+        }
     }
 }
