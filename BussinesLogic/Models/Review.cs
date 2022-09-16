@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace BussinesLogic.Models
 {
     public class Review
     {
-        public User UserFrom { get; set; }
+        public ApplicationUser UserFrom { get; set; }
         public string Text { get; set; }
+
 
     }
 }

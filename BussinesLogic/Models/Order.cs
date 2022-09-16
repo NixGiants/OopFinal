@@ -4,7 +4,7 @@ namespace BussinesLogic.Models
 {
     public class Order
     {
-        public User? UserInOrder { get; set; }
+        public ApplicationUser? UserInOrder { get; set; }
         public Basket? BasketInOrder { get; set; }
         public IPaymentMethod? PaymentInfo { get; set; }
         public IShipmentMethod? ShipmentInfo{ get; set; }
