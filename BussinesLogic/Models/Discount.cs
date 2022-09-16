@@ -37,9 +37,6 @@
             else if (percantage <= 0)
                 throw new ArgumentException("Percentage cant be less or equal to zero");
 
-            else if (percantage == 0)
-                throw new ArgumentException("Percentage cant be null");
-
             _durationTuple = durationTuple;
             Name = name;
             Percantage = percantage;
