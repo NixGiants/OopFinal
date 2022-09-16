@@ -26,16 +26,19 @@
         public Discount((DateTime from, DateTime to) durationTuple, string name, int percantage)
         {
             if (IsValid)
-                throw new ArgumentException("_durationTuble values cant be equal");
+                throw new ArgumentException("_durationTuple values cant be equal");
 
             else if (durationTuple.to < durationTuple.from)
-                throw new ArgumentException("_durationTuble value Datetime from, cant be more then Datetime to");
+                throw new ArgumentException("_durationTuple value Datetime from, cant be more then Datetime to");
 
             else if (String.IsNullOrEmpty(name))
                 throw new ArgumentException("Name cant be null or empty");
 
             else if (percantage <= 0)
                 throw new ArgumentException("Percentage cant be less or equal to zero");
+
+            else if (percantage == 0)
+                throw new ArgumentException("Percentage cant be null");
 
             _durationTuple = durationTuple;
             Name = name;
