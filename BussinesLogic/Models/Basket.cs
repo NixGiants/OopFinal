@@ -25,6 +25,12 @@ namespace BussinesLogic.Models
                 return 0;
             }
         }
+
+        public Basket(List<Product> products)
+        {
+            _products = products;
+        }
+
         public bool AddProduct(Product product)
         {
             if (!product.IsAvailable) return false;
