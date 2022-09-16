@@ -37,5 +37,18 @@ namespace BussinesLogic.Models
         {
             Console.WriteLine("Product by the name of {0} was deleted",product.Name);
         }
+
+        public override string ToString()
+        {
+            string res = "";
+            foreach (Product pr in _products)
+            {
+                res += $"\n{pr}";
+
+            }
+            res +="Total price =\t"+TotalPrice;
+            return res;
+
+        }
     }
 }
