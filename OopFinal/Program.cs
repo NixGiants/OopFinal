@@ -62,7 +62,7 @@ do
                 Console.WriteLine("You choose Exit Program Will close soon");
                 Thread.Sleep(500);
                 Console.WriteLine("Closing...");
-                Thread.Sleep(3000);
+                Thread.Sleep(2000);
                 Console.WriteLine("Closed");
                 break;
             case 1:
@@ -89,13 +89,16 @@ do
                                 {
                                     currentUser = appUser;
                                     AuthorizationChoice = 0;
-                                    Console.WriteLine($"Hello {currentUser.FirstName} {currentUser.LastName}");
                                 }
-                                else
-                                {
-                                    Console.WriteLine("Sorry, You are not registered yet");
-                                    Console.WriteLine("If you want try one more time\tpress 1\nFor Exit\tPress 0");
-                                }
+                            }
+                            if(currentUser == null)
+                            {
+                                Console.WriteLine("Sorry, You are not registered yet");
+                                Console.WriteLine("If you want try one more time\tpress 1\nFor Exit\tPress 0");
+                            }
+                            else
+                            {
+                                Console.WriteLine($"Hello {currentUser.FirstName} {currentUser.LastName}");
                             }
                             break;
                     }
