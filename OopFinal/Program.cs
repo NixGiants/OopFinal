@@ -43,7 +43,9 @@ IPaymentMethod googlePay = new GooglePay();
 IPaymentMethod privatBank = new PrivatBankPay();
 List<IPaymentMethod> listOfPaymentMethods = new List<IPaymentMethod>();
 
-ApplicationUser? currentUser = null;
+ApplicationUser Customer = new("Vasya", "Vasiliev", listOfPaymentMethods, "Vasya", "12345", Access.Customer);
+ApplicationUser Admin = new ApplicationUser("Gerakl", "Greece", listOfPaymentMethods, "admin", "admin", Access.Admin);
+List<ApplicationUser> RegisteredUsers = new List<ApplicationUser> { Customer, Admin };
 Console.WriteLine("Hello! We are Happy to see you in E-Shop!\n\n");
 int enteringChoice = -1;
 do
