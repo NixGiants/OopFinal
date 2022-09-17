@@ -59,11 +59,7 @@ do
         switch (enteringChoice)
         {
             case 0:
-                Console.WriteLine("You choose Exit Program Will close soon");
-                Thread.Sleep(500);
-                Console.WriteLine("Closing...");
-                Thread.Sleep(2000);
-                Console.WriteLine("Closed");
+                Exit();
                 break;
             case 1:
                 ApplicationUser? currentUser = null;
@@ -116,7 +112,35 @@ do
                 switch (currentUser.Access)
                 {
                     case Access.Customer:
+                        Basket currentBasket = new Basket();
+                        int categoryIndex = 0;
+                        do
+                        {
+                            Console.WriteLine("Categories:\n 1) milk products\n2)Head Sets\n0)Exit");
+                            try
+                            {
+                                categoryIndex = Convert.ToInt32(Console.ReadLine());
+                                switch (categoryIndex)
+                                {
+                                    case 0:
+                                        Exit();
+                                        break;
 
+                                    case 1:
+
+                                        break;
+
+                                    case 2:
+
+                                        break;
+                                }
+
+                            }
+                            catch (Exception e)
+                            {
+                                Console.WriteLine(" Invalid choice. Try one more time");
+                            }
+                        } while (categoryIndex != 0);
                         break;
                     case Access.Admin:
 
@@ -131,4 +155,14 @@ do
     }
 
 } while (enteringChoice != 0);
+
+
+void Exit()
+{
+    Console.WriteLine("You choose Exit Program Will close soon");
+    Thread.Sleep(500);
+    Console.WriteLine("Closing...");
+    Thread.Sleep(2000);
+    Console.WriteLine("Closed");
+}
 
