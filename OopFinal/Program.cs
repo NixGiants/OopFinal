@@ -3,6 +3,7 @@ using BussinesLogic.Interfaces;
 using BussinesLogic.Models;
 using BussinesLogic.Models.Payment;
 using BussinesLogic.Enums;
+using System.Runtime.CompilerServices;
 
 Console.WriteLine("Test Program:\n ");
 
@@ -42,26 +43,42 @@ IPaymentMethod googlePay = new GooglePay();
 IPaymentMethod privatBank = new PrivatBankPay();
 List<IPaymentMethod> listOfPaymentMethods = new List<IPaymentMethod>();
 
+ApplicationUser? currentUser = null;
 Console.WriteLine("Hello! We are Happy to see you in E-Shop!\n\n");
-int usingAccessChoice = -1;
+int enteringChoice = -1;
 do
 { 
-    Console.WriteLine("If you want to enter as:\n1) User -- press 1\n2) Have an admin account -- press 2\n0) For Exit -- press 0");
+    Console.WriteLine("If you want to\n1) Enter press -- 1\n0) For Exit -- press 0");
 
     try
     {
-        usingAccessChoice = Convert.ToInt32(Console.ReadLine());
-        switch (usingAccessChoice)
+        enteringChoice = Convert.ToInt32(Console.ReadLine());
+        switch (enteringChoice)
         {
+            case 0:
+                Console.WriteLine("You choose Exit Program Will close soon");
+                System.Threading.Thread.Sleep(500);
+                Console.WriteLine("Closing...");
+                System.Threading.Thread.Sleep(3000);
+                Console.WriteLine("Closed");
+                break;
             case 1:
-                Console.WriteLine("You are User");
-                break;
-            case 2:
-                Console.WriteLine("You are Admin");
-                break;
+                string? Login = "";
+                Console.WriteLine("Enter Login or Enter 0 if you are new user");
+                Login = Console.ReadLine();
+                switch (Login)
+                {
+                    case "0":
 
-            case 3:
-                Console.WriteLine("You choose exit");
+                        break;
+
+                    default:
+                        string? Password = "";
+                        Console.WriteLine("Enter Password :");
+                        Password = Console.ReadLine();
+
+                        break;
+                }
                 break;
         }
     }
@@ -70,5 +87,5 @@ do
         Console.WriteLine("Invalid Choice try one more time");
     }
 
-} while (usingAccessChoice != 0);
+} while (enteringChoice != 0);
 
