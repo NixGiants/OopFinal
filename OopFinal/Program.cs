@@ -217,7 +217,17 @@ do
                         switch (adminChoice)
                         {
                             case 1:
-
+                                Console.WriteLine("Enter Name of Categorie");
+                                string categoryName = Console.ReadLine();
+                                Category newCategory = new(categoryName);
+                                if (newCategory != null)
+                                {
+                                    Console.WriteLine("Category was created");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Something went wrong...");
+                                }
                                 break;
 
                             case 2:
