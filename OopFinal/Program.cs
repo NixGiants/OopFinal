@@ -116,7 +116,7 @@ do
                         int categoryIndex = 0;
                         do
                         {
-                            Console.WriteLine("Categories:\n 1) milk products\n2)Head Sets\n0)Exit");
+                            Console.WriteLine("Categories:\n 1) milk products\n2)Head Sets\n3)Pay For Order\n0)Exit");
                             try
                             {
                                 categoryIndex = Convert.ToInt32(Console.ReadLine());
@@ -134,6 +134,14 @@ do
                                             Console.WriteLine($"{counter}) {pr}");
                                         }
                                         counter = 0;
+                                        int productNumber = 0;
+                                        do
+                                        {
+                                            Console.WriteLine("For add product to cart press number of this product\npress 0 to exit");
+                                            productNumber = Convert.ToInt32(Console.ReadLine());
+                                            Product product = listOfMilkProducts[productNumber - 1];
+                                            currentBasket.AddProduct(product);
+                                        } while (productNumber != 0);
                                         break;
 
                                     case 2:
@@ -143,12 +151,17 @@ do
                                             Console.WriteLine($"{counter}) {pr}");
                                         }
                                         counter = 0;
+                                        int productNumber1 = 0;
+                                        do
+                                        {
+                                            Console.WriteLine("For add product to cart press number of this product\npress 0 to exit");
+                                            productNumber1 = Convert.ToInt32(Console.ReadLine());
+                                            Product product = listOfMilkProducts[productNumber1 - 1];
+                                            currentBasket.AddProduct(product);
+                                        } while (productNumber1 != 0);
                                         break;
                                 }
-                                Console.WriteLine();
-                                {
-
-                                }
+                                
 
                             }
                             catch (Exception e)
