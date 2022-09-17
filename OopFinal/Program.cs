@@ -115,7 +115,7 @@ do
                     int categoryIndex = 0;
                     do
                     {
-                        Console.WriteLine("Choose:\n1) Look at milk products\n2) look at Head Sets\n3)Pay For Order\n0)Exit");
+                        Console.WriteLine("Choose:\n1) Look at milk products\n2) look at Head Sets\n3)Pay For Order\n0) to Exit -- 0");
                         categoryIndex = Convert.ToInt32(Console.ReadLine());
                         int counter = 0;
                         switch (categoryIndex)
@@ -136,6 +136,7 @@ do
                                 {
                                     Console.WriteLine("For add product to cart press number of this product\npress 0 to exit");
                                     productNumber = Convert.ToInt32(Console.ReadLine());
+                                    if (productNumber == 0) { continue; }
                                     Product product = listOfMilkProducts[productNumber - 1];
                                     currentBasket.AddProduct(product);
                                 } while (productNumber != 0);
@@ -153,6 +154,7 @@ do
                                 {
                                     Console.WriteLine("For add product to cart press number of this product\npress 0 to exit");
                                     productNumber1 = Convert.ToInt32(Console.ReadLine());
+                                    if(productNumber1 == 0) { continue; }
                                     Product product = listOfMilkProducts[productNumber1 - 1];
                                     currentBasket.AddProduct(product);
                                 } while (productNumber1 != 0);
@@ -207,9 +209,36 @@ do
                     } while (categoryIndex != 0);
                     break;
                 case Access.Admin:
+                    int adminChoice = 0;
+                    do
+                    {
+                        Console.WriteLine("For\n1)add new category pres 1;\n2)add new product press 2\n0) for Exit");
+                        adminChoice = Convert.ToInt32(Console.ReadLine());
+                        switch (adminChoice)
+                        {
+                            case 1:
+
+                                break;
+
+                            case 2:
+
+                                break;
+
+                            case 0:
+                                Console.WriteLine("Exiting");
+                                break;
+
+                            default:
+                                Console.WriteLine("Invalid Choice");
+                                break;
+                        }
+                    }while (adminChoice != 0);
 
                     break;
             }
+            break;
+        default:
+            Console.WriteLine("Wrong Choice");
             break;
     }
 
