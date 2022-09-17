@@ -133,7 +133,7 @@ do
                                 foreach (Product pr in listOfMilkProducts)
                                 {
                                     counter++;
-                                    Console.WriteLine($"{counter}) {pr}");
+                                    Console.WriteLine($"\n{counter}) {pr}");
                                 }
                                 counter = 0;
                                 int productNumber = 0;
@@ -151,7 +151,7 @@ do
                                 foreach (Product pr in listOfHeadSets)
                                 {
                                     counter++;
-                                    Console.WriteLine($"{counter}) {pr}");
+                                    Console.WriteLine($"\n{counter}) {pr}");
                                 }
                                 counter = 0;
                                 int productNumber1 = 0;
