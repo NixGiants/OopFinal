@@ -4,6 +4,7 @@ using BussinesLogic.Models;
 using BussinesLogic.Models.Payment;
 using BussinesLogic.Enums;
 using System.Runtime.CompilerServices;
+using BussinesLogic.Models.Shipments;
 
 Console.WriteLine("Test Program:\n ");
 
@@ -116,7 +117,7 @@ do
                         int categoryIndex = 0;
                         do
                         {
-                            Console.WriteLine("Categories:\n 1) milk products\n2)Head Sets\n3)Pay For Order\n0)Exit");
+                            Console.WriteLine("Choose:\n 1) Look at milk products\n2) look at Head Sets\n3)Pay For Order\n0)Exit");
                             try
                             {
                                 categoryIndex = Convert.ToInt32(Console.ReadLine());
@@ -160,9 +161,52 @@ do
                                             currentBasket.AddProduct(product);
                                         } while (productNumber1 != 0);
                                         break;
-                                }
-                                
+                                    case 3:
+                                        int indexOfPaymentMethod = 0;
+                                        IPaymentMethod? paymentMethod = null;
+                                        do
+                                        {
+                                            Console.WriteLine("Choose Method for payment:\n1) Google Pay\n2) Private Bank");
+                                            indexOfPaymentMethod = Convert.ToInt32(Console.ReadLine());
+                                            switch (indexOfPaymentMethod)
+                                            {
+                                                case 1:
+                                                    paymentMethod = new GooglePay();
+                                                    break;
+                                                case 2:
+                                                    paymentMethod = new PrivatBankPay();
+                                                    break;
+                                                default: Console.WriteLine("Wrong method");
+                                                    break;
+                                            }
+                                        } while (indexOfPaymentMethod != 1 || indexOfPaymentMethod != 2);
+                                        int indexOfShipment = 0;
+                                        IShipmentMethod? shipmentMethod = null;
+                                        do
+                                        {
+                                            Console.WriteLine("Choose method for Ship:\n1)Curier\n2) Self Pick up");
+                                            indexOfShipment = Convert.ToInt32(Console.ReadLine());  
+                                            switch (indexOfShipment)
+                                            {
+                                                case 1:
+                                                    shipmentMethod = new CurierShipment();
+                                                    break;
+                                                case 2:
+                                                    shipmentMethod = new SelfPickupShipment();
+                                                    break;
+                                                default:
+                                                    Console.WriteLine("Wrong method");
+                                                    break;
+                                            }
+ 
+                                        } while (indexOfShipment == 1 || indexOfShipment == 2);
 
+                                        Order currentOrder = new Order(currentUser, currentBasket, paymentMethod, shipmentMethod);
+                                        currentOrder.PayForOrder();
+                                        Console.WriteLine(currentOrder);
+                                        categoryIndex = 0;
+                                        break;
+                                }
                             }
                             catch (Exception e)
                             {
