@@ -21,6 +21,11 @@ namespace BussinesLogic.Models
             }
         }
 
+        public Basket()
+        {
+            _products = new List<Product>();
+        }
+
         public Basket(List<Product> products)
         {
             _products = products;
