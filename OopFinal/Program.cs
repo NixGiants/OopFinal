@@ -60,9 +60,9 @@ do
         {
             case 0:
                 Console.WriteLine("You choose Exit Program Will close soon");
-                System.Threading.Thread.Sleep(500);
+                Thread.Sleep(500);
                 Console.WriteLine("Closing...");
-                System.Threading.Thread.Sleep(3000);
+                Thread.Sleep(3000);
                 Console.WriteLine("Closed");
                 break;
             case 1:
@@ -70,7 +70,6 @@ do
                 int AuthorizationChoice = -1;
                 do
                 {
-
                     Console.WriteLine("Enter Login or Enter 0 if you are new user");
                     string Login = Console.ReadLine();
                     switch (Login)
@@ -101,6 +100,15 @@ do
                             break;
                     }
                 } while (AuthorizationChoice != 0);
+                switch (currentUser.Access)
+                {
+                    case Access.Customer:
+
+                        break;
+                    case Access.Admin:
+
+                        break;
+                }
                 break;
         }
     }
