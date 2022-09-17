@@ -26,5 +26,17 @@ namespace BussinesLogic.Models
             Password = password;
             Access = access;
         }
+
+        public bool CheckIsRegistered (string loginCheck, string passwordCheck)
+        {
+            if(this.Login == loginCheck && this.Password == passwordCheck)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }
