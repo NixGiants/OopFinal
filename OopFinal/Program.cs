@@ -75,7 +75,16 @@ do
                     switch (Login)
                     {
                         case "0":
-                            Console.WriteLine("This is program for test we cant affort new users now\nComing soon");
+                            Console.WriteLine("Enter First Name: ");
+                            string FirstName = Console.ReadLine();
+                            Console.WriteLine("Enter Last Name");
+                            string LastName = Console.ReadLine();
+                            Console.WriteLine("Enter login: ");
+                            string login = Console.ReadLine();
+                            Console.WriteLine("Enter Password");
+                            string password = Console.ReadLine();
+
+                            currentUser = new ApplicationUser(FirstName, LastName, null, login ,password, Access.Customer);
                             AuthorizationChoice = 0;
                             break;
 
