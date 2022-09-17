@@ -5,12 +5,17 @@ using BussinesLogic.Models.Payment;
 using BussinesLogic.Enums;
 using System.Runtime.CompilerServices;
 using BussinesLogic.Models.Shipments;
+using System.Net.Http.Headers;
 
 Console.WriteLine("Test Program:\n ");
 
 
 ICategory milkProducts = new Category("Milk Products");
 ICategory headSets = new Category("Head sets");
+
+List<ICategory> listOfCategories = new List<ICategory>();
+listOfCategories.Add(milkProducts);
+listOfCategories.Add(headSets);
 
 Product milk = new("Milk", "Romol", "15% Milk", null, 40, milkProducts, true);
 Product sourCream = new("Sour cream", "Zakarpatiia", "25% Sour Cream", null, 80, milkProducts, true);
@@ -219,9 +224,10 @@ do
                             case 1:
                                 Console.WriteLine("Enter Name of Categorie");
                                 string categoryName = Console.ReadLine();
-                                Category newCategory = new(categoryName);
+                                ICategory newCategory = new Category(categoryName);
                                 if (newCategory != null)
                                 {
+                                    listOfCategories.Add(newCategory);
                                     Console.WriteLine("Category was created");
                                 }
                                 else
@@ -231,7 +237,25 @@ do
                                 break;
 
                             case 2:
-
+                                Console.WriteLine("Enter Name of product: ");
+                                string name = Console.ReadLine();
+                                Console.WriteLine("Enter Brand: ");
+                                string brand = Console.ReadLine();
+                                Console.WriteLine("Enter Description: ");
+                                string description = Console.ReadLine();
+                                Console.WriteLine("Enter integer Price");
+                                int price = Convert.ToInt32(Console.ReadLine());
+                                int counter = 0;
+                                Console.WriteLine("Choose Category");
+                                foreach(ICategory cat in listOfCategories)
+                                {
+                                    counter++;
+                                    Console.WriteLine($"{counter}) {cat.Name}");
+                                }
+                                int ChoosenCategory = Convert.ToInt32(Console.ReadLine());
+                                ICategory choseCategory = listOfCategories[ChoosenCategory - 1];
+                                Product newProduct = new (name, brand,description, null, price, choseCategory, true);
+                                Console.WriteLine($"{newProduct}\nWas created");
                                 break;
 
                             case 0:
