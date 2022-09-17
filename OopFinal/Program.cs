@@ -4,7 +4,7 @@ using BussinesLogic.Models;
 using BussinesLogic.Models.Payment;
 using BussinesLogic.Enums;
 
-Console.WriteLine("Test Program: ");
+Console.WriteLine("Test Program:\n ");
 
 
 ICategory milkProducts = new Category("Milk Products");
@@ -41,3 +41,34 @@ listOfHeadSets.Add(xiaomiHeadSet);
 IPaymentMethod googlePay = new GooglePay();
 IPaymentMethod privatBank = new PrivatBankPay();
 List<IPaymentMethod> listOfPaymentMethods = new List<IPaymentMethod>();
+
+Console.WriteLine("Hello! We are Happy to see you in E-Shop!\n\n");
+int usingAccessChoice = -1;
+do
+{ 
+    Console.WriteLine("If you want to enter as:\n1) User -- press 1\n2) Have an admin account -- press 2\n0) For Exit -- press 0");
+
+    try
+    {
+        usingAccessChoice = Convert.ToInt32(Console.ReadLine());
+        switch (usingAccessChoice)
+        {
+            case 1:
+                Console.WriteLine("You are User");
+                break;
+            case 2:
+                Console.WriteLine("You are Admin");
+                break;
+
+            case 3:
+                Console.WriteLine("You choose exit");
+                break;
+        }
+    }
+    catch (Exception e)
+    {
+        Console.WriteLine("Invalid Choice try one more time");
+    }
+
+} while (usingAccessChoice != 0);
+
