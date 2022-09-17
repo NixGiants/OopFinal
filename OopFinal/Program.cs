@@ -13,9 +13,9 @@ ICategory milkProducts = new Category("Milk Products");
 ICategory headSets = new Category("Head sets");
 
 Product milk = new("Milk", "Romol", "15% Milk", null, 40, milkProducts, true);
-Product sourCream = new("Sour cream", "Zakarpatiia", "25% Sour Cream", null, 80,milkProducts,true);
+Product sourCream = new("Sour cream", "Zakarpatiia", "25% Sour Cream", null, 80, milkProducts, true);
 Product butter = new Product("Butter", "Romol", "85% Butter", null, 120, milkProducts, true);
-Product hollandCheese = new("Holland Cheese", "Zakarpatia", "Perfect cheese from cow milk", null, 350, milkProducts,true);
+Product hollandCheese = new("Holland Cheese", "Zakarpatia", "Perfect cheese from cow milk", null, 350, milkProducts, true);
 Product serum = new("Serum", "Zakarpatia", "good serum", null, 30, milkProducts, true);
 
 Product sonyHeadSet = new Product("S128", "Philips", "Very expensive and good head set", null, 1500, headSets, true);
@@ -51,179 +51,166 @@ List<ApplicationUser> RegisteredUsers = new List<ApplicationUser> { Customer, Ad
 Console.WriteLine("Hello! We are Happy to see you in E-Shop!\n\n");
 int enteringChoice = -1;
 do
-{ 
+{
     Console.WriteLine("\n\nIf you want to\n1) Enter application -- 1\n0) Exit from application -- press 0");
 
-    try
+    enteringChoice = Convert.ToInt32(Console.ReadLine());
+    switch (enteringChoice)
     {
-        enteringChoice = Convert.ToInt32(Console.ReadLine());
-        switch (enteringChoice)
-        {
-            case 0:
-                Exit();
-                break;
-            case 1:
-                ApplicationUser? currentUser = null;
-                int AuthorizationChoice = -1;
-                do
+        case 0:
+            Exit();
+            break;
+        case 1:
+            ApplicationUser? currentUser = null;
+            int AuthorizationChoice = -1;
+            do
+            {
+                Console.WriteLine("Enter Login or Enter 0 if you are new user");
+                string Login = Console.ReadLine();
+                switch (Login)
                 {
-                    Console.WriteLine("Enter Login or Enter 0 if you are new user");
-                    string Login = Console.ReadLine();
-                    switch (Login)
-                    {
-                        case "0":
-                            Console.WriteLine("Enter First Name: ");
-                            string FirstName = Console.ReadLine();
-                            Console.WriteLine("Enter Last Name");
-                            string LastName = Console.ReadLine();
-                            Console.WriteLine("Enter login: ");
-                            string login = Console.ReadLine();
-                            Console.WriteLine("Enter Password");
-                            string password = Console.ReadLine();
+                    case "0":
+                        Console.WriteLine("Enter First Name: ");
+                        string FirstName = Console.ReadLine();
+                        Console.WriteLine("Enter Last Name");
+                        string LastName = Console.ReadLine();
+                        Console.WriteLine("Enter login: ");
+                        string login = Console.ReadLine();
+                        Console.WriteLine("Enter Password");
+                        string password = Console.ReadLine();
 
-                            currentUser = new ApplicationUser(FirstName, LastName, null, login ,password, Access.Customer);
-                            Console.WriteLine($"Hello {currentUser.FirstName} {currentUser.LastName}");
-                            AuthorizationChoice = 0;
-                            break;
-
-                        default:
-                            string Password = "";
-                            Console.WriteLine("Enter Password :");
-                            Password = Console.ReadLine();
-                            foreach (ApplicationUser appUser in RegisteredUsers)
-                            {
-                                if (appUser.CheckIsRegistered(Login, Password))
-                                {
-                                    currentUser = appUser;
-                                    AuthorizationChoice = 0;
-                                }
-                            }
-                            if(currentUser == null)
-                            {
-                                Console.WriteLine("Sorry, You are not registered yet");
-                                Console.WriteLine("If you want try one more time\tpress 1\nFor Exit\tPress 0");
-                            }
-                            else
-                            {
-                                Console.WriteLine($"Hello {currentUser.FirstName} {currentUser.LastName}");
-                            }
-                            break;
-                    }
-                } while (AuthorizationChoice != 0);
-                switch (currentUser.Access)
-                {
-                    case Access.Customer:
-                        Basket currentBasket = new Basket();
-                        int categoryIndex = 0;
-                        do
-                        {
-                            Console.WriteLine("Choose:\n1) Look at milk products\n2) look at Head Sets\n3)Pay For Order\n0)Exit");
-                            try
-                            {
-                                categoryIndex = Convert.ToInt32(Console.ReadLine());
-                                int counter = 0;
-                                switch (categoryIndex)
-                                {
-                                    case 0:
-                                        Exit();
-                                        break;
-
-                                    case 1:
-                                        foreach (Product pr in listOfMilkProducts)
-                                        {
-                                            counter++;
-                                            Console.WriteLine($"{counter}) {pr}");
-                                        }
-                                        counter = 0;
-                                        int productNumber = 0;
-                                        do
-                                        {
-                                            Console.WriteLine("For add product to cart press number of this product\npress 0 to exit");
-                                            productNumber = Convert.ToInt32(Console.ReadLine());
-                                            Product product = listOfMilkProducts[productNumber - 1];
-                                            currentBasket.AddProduct(product);
-                                        } while (productNumber != 0);
-                                        break;
-
-                                    case 2:
-                                        foreach (Product pr in listOfHeadSets)
-                                        {
-                                            counter++;
-                                            Console.WriteLine($"{counter}) {pr}");
-                                        }
-                                        counter = 0;
-                                        int productNumber1 = 0;
-                                        do
-                                        {
-                                            Console.WriteLine("For add product to cart press number of this product\npress 0 to exit");
-                                            productNumber1 = Convert.ToInt32(Console.ReadLine());
-                                            Product product = listOfMilkProducts[productNumber1 - 1];
-                                            currentBasket.AddProduct(product);
-                                        } while (productNumber1 != 0);
-                                        break;
-                                    case 3:
-                                        int indexOfPaymentMethod = 0;
-                                        IPaymentMethod? paymentMethod = null;
-                                        do
-                                        {
-                                            Console.WriteLine("Choose Method for payment:\n1) Google Pay\n2) Private Bank");
-                                            indexOfPaymentMethod = Convert.ToInt32(Console.ReadLine());
-                                            switch (indexOfPaymentMethod)
-                                            {
-                                                case 1:
-                                                    paymentMethod = new GooglePay();
-                                                    break;
-                                                case 2:
-                                                    paymentMethod = new PrivatBankPay();
-                                                    break;
-                                                default: Console.WriteLine("Wrong method");
-                                                    break;
-                                            }
-                                        } while (paymentMethod == null);
-                                        int indexOfShipment = 0;
-                                        IShipmentMethod? shipmentMethod = null;
-                                        do
-                                        {
-                                            Console.WriteLine("Choose method for Ship:\n1)Curier\n2) Self Pick up");
-                                            indexOfShipment = Convert.ToInt32(Console.ReadLine());  
-                                            switch (indexOfShipment)
-                                            {
-                                                case 1:
-                                                    shipmentMethod = new CurierShipment();
-                                                    break;
-                                                case 2:
-                                                    shipmentMethod = new SelfPickupShipment();
-                                                    break;
-                                                default:
-                                                    Console.WriteLine("Wrong method");
-                                                    break;
-                                            }
- 
-                                        } while(shipmentMethod == null);
-
-                                        Order currentOrder = new Order(currentUser, currentBasket, paymentMethod, shipmentMethod);
-                                        currentOrder.PayForOrder();
-                                        Console.WriteLine(currentOrder);
-                                        categoryIndex = 0;
-                                        break;
-                                }
-                            }
-                            catch (Exception e)
-                            {
-                                Console.WriteLine("Invalid choice. Try one more time");
-                            }
-                        } while (categoryIndex != 0);
+                        currentUser = new ApplicationUser(FirstName, LastName, null, login, password, Access.Customer);
+                        Console.WriteLine($"Hello {currentUser.FirstName} {currentUser.LastName}");
+                        AuthorizationChoice = 0;
                         break;
-                    case Access.Admin:
 
+                    default:
+                        string Password = "";
+                        Console.WriteLine("Enter Password :");
+                        Password = Console.ReadLine();
+                        foreach (ApplicationUser appUser in RegisteredUsers)
+                        {
+                            if (appUser.CheckIsRegistered(Login, Password))
+                            {
+                                currentUser = appUser;
+                                AuthorizationChoice = 0;
+                            }
+                        }
+                        if (currentUser == null)
+                        {
+                            Console.WriteLine("Sorry, You are not registered yet");
+                            Console.WriteLine("If you want try one more time\tpress 1\nFor Exit\tPress 0");
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Hello {currentUser.FirstName} {currentUser.LastName}");
+                        }
                         break;
                 }
-                break;
-        }
-    }
-    catch (Exception e)
-    {
-        Console.WriteLine("Invalid Choice try one more time");
+            } while (AuthorizationChoice != 0);
+            switch (currentUser.Access)
+            {
+                case Access.Customer:
+                    Basket currentBasket = new Basket();
+                    int categoryIndex = 0;
+                    do
+                    {
+                        Console.WriteLine("Choose:\n1) Look at milk products\n2) look at Head Sets\n3)Pay For Order\n0)Exit");
+                        categoryIndex = Convert.ToInt32(Console.ReadLine());
+                        int counter = 0;
+                        switch (categoryIndex)
+                        {
+                            case 0:
+                                Exit();
+                                break;
+
+                            case 1:
+                                foreach (Product pr in listOfMilkProducts)
+                                {
+                                    counter++;
+                                    Console.WriteLine($"{counter}) {pr}");
+                                }
+                                counter = 0;
+                                int productNumber = 0;
+                                do
+                                {
+                                    Console.WriteLine("For add product to cart press number of this product\npress 0 to exit");
+                                    productNumber = Convert.ToInt32(Console.ReadLine());
+                                    Product product = listOfMilkProducts[productNumber - 1];
+                                    currentBasket.AddProduct(product);
+                                } while (productNumber != 0);
+                                break;
+
+                            case 2:
+                                foreach (Product pr in listOfHeadSets)
+                                {
+                                    counter++;
+                                    Console.WriteLine($"{counter}) {pr}");
+                                }
+                                counter = 0;
+                                int productNumber1 = 0;
+                                do
+                                {
+                                    Console.WriteLine("For add product to cart press number of this product\npress 0 to exit");
+                                    productNumber1 = Convert.ToInt32(Console.ReadLine());
+                                    Product product = listOfMilkProducts[productNumber1 - 1];
+                                    currentBasket.AddProduct(product);
+                                } while (productNumber1 != 0);
+                                break;
+                            case 3:
+                                int indexOfPaymentMethod = 0;
+                                IPaymentMethod? paymentMethod = null;
+                                do
+                                {
+                                    Console.WriteLine("Choose Method for payment:\n1) Google Pay\n2) Private Bank");
+                                    indexOfPaymentMethod = Convert.ToInt32(Console.ReadLine());
+                                    switch (indexOfPaymentMethod)
+                                    {
+                                        case 1:
+                                            paymentMethod = new GooglePay();
+                                            break;
+                                        case 2:
+                                            paymentMethod = new PrivatBankPay();
+                                            break;
+                                        default:
+                                            Console.WriteLine("Wrong method");
+                                            break;
+                                    }
+                                } while (paymentMethod == null);
+                                int indexOfShipment = 0;
+                                IShipmentMethod? shipmentMethod = null;
+                                do
+                                {
+                                    Console.WriteLine("Choose method for Ship:\n1)Curier\n2) Self Pick up");
+                                    indexOfShipment = Convert.ToInt32(Console.ReadLine());
+                                    switch (indexOfShipment)
+                                    {
+                                        case 1:
+                                            shipmentMethod = new CurierShipment();
+                                            break;
+                                        case 2:
+                                            shipmentMethod = new SelfPickupShipment();
+                                            break;
+                                        default:
+                                            Console.WriteLine("Wrong method");
+                                            break;
+                                    }
+
+                                } while (shipmentMethod == null);
+
+                                Order currentOrder = new Order(currentUser, currentBasket, paymentMethod, shipmentMethod);
+                                currentOrder.PayForOrder();
+                                Console.WriteLine(currentOrder);
+                                categoryIndex = 0;
+                                break;
+                        }
+                    } while (categoryIndex != 0);
+                    break;
+                case Access.Admin:
+
+                    break;
+            }
+            break;
     }
 
 } while (enteringChoice != 0);
