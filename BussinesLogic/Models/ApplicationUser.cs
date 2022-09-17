@@ -1,6 +1,7 @@
 ﻿
 using BussinesLogic.Enums;
 using BussinesLogic.Interfaces;
+using System.Diagnostics;
 
 namespace BussinesLogic.Models
 {
@@ -8,6 +9,12 @@ namespace BussinesLogic.Models
     {
         public ApplicationUser(string firstName, string lastName, List<IPaymentMethod>? paymentMethods, string? login, string? password, Access access) : base(firstName, lastName, paymentMethods, login, password, access)
         {
+        }
+
+        public override string ToString()
+        {
+            string res = $"User login: {this.Login}\nWith full name {this.FirstName} {this.LastName}";
+            return res;
         }
     }
 }

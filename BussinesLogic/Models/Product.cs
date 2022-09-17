@@ -9,7 +9,7 @@ namespace BussinesLogic.Models
         public string Description { get; set; }
         public Discount? Reduction { get; set; }
         public decimal Price { get; set; }
-        public ICategory CategoryOfProduct { get; set; } //not null
+        public ICategory CategoryOfProduct { get; set; } 
         public bool IsAvailable { get; set; }
 
         public Product(string name, string brand, string description, Discount reduction, decimal price, ICategory categoryOfProduct, bool isAvailable)
@@ -36,6 +36,11 @@ namespace BussinesLogic.Models
         {
 
             Console.WriteLine("SomeLogic from GetPriceFromDiscount");
+        }
+
+        public override string ToString()
+        {
+            return $"{Name} from brand {Brand}\nIn category {CategoryOfProduct.Name}\nPrice {Price}";
         }
     }
 }

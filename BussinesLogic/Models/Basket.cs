@@ -21,6 +21,11 @@ namespace BussinesLogic.Models
             }
         }
 
+        public Basket()
+        {
+            _products = new List<Product>();
+        }
+
         public Basket(List<Product> products)
         {
             _products = products;
@@ -36,6 +41,18 @@ namespace BussinesLogic.Models
         public void DeleteProduct(Product product)/*Uniqe identifier later on*/
         {
             Console.WriteLine("Product by the name of {0} was deleted",product.Name);
+        }
+
+        public override string ToString()
+        {
+            string res = "";
+            foreach (Product pr in _products)
+            {
+                res += $"\n{pr}\n";
+            }
+            res +="Total price =\t"+TotalPrice;
+            return res;
+
         }
     }
 }
