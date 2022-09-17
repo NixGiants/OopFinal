@@ -46,6 +46,7 @@ List<IPaymentMethod> listOfPaymentMethods = new List<IPaymentMethod>();
 ApplicationUser Customer = new("Vasya", "Vasiliev", listOfPaymentMethods, "Vasya", "12345", Access.Customer);
 ApplicationUser Admin = new ApplicationUser("Gerakl", "Greece", listOfPaymentMethods, "admin", "admin", Access.Admin);
 List<ApplicationUser> RegisteredUsers = new List<ApplicationUser> { Customer, Admin };
+
 Console.WriteLine("Hello! We are Happy to see you in E-Shop!\n\n");
 int enteringChoice = -1;
 do
@@ -65,22 +66,41 @@ do
                 Console.WriteLine("Closed");
                 break;
             case 1:
-                string? Login = "";
-                Console.WriteLine("Enter Login or Enter 0 if you are new user");
-                Login = Console.ReadLine();
-                switch (Login)
+                ApplicationUser? currentUser = null;
+                int AuthorizationChoice = -1;
+                do
                 {
-                    case "0":
 
-                        break;
+                    Console.WriteLine("Enter Login or Enter 0 if you are new user");
+                    string Login = Console.ReadLine();
+                    switch (Login)
+                    {
+                        case "0":
+                            Console.WriteLine("This is program for test we cant affort new users now\nComing soon");
+                            AuthorizationChoice = 0;
+                            break;
 
-                    default:
-                        string? Password = "";
-                        Console.WriteLine("Enter Password :");
-                        Password = Console.ReadLine();
-
-                        break;
-                }
+                        default:
+                            string Password = "";
+                            Console.WriteLine("Enter Password :");
+                            Password = Console.ReadLine();
+                            foreach (ApplicationUser appUser in RegisteredUsers)
+                            {
+                                if (appUser.CheckIsRegistered(Login, Password))
+                                {
+                                    currentUser = appUser;
+                                    AuthorizationChoice = 0;
+                                    Console.WriteLine($"Hello {currentUser.FirstName} {currentUser.LastName}");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Sorry, You are not registered yet");
+                                    Console.WriteLine("If you want try one more time\tpress 1\nFor Exit\tPress 0");
+                                }
+                            }
+                            break;
+                    }
+                } while (AuthorizationChoice != 0);
                 break;
         }
     }
