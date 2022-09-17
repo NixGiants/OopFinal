@@ -120,6 +120,7 @@ do
                             try
                             {
                                 categoryIndex = Convert.ToInt32(Console.ReadLine());
+                                int counter = 0;
                                 switch (categoryIndex)
                                 {
                                     case 0:
@@ -127,12 +128,26 @@ do
                                         break;
 
                                     case 1:
-
+                                        foreach (Product pr in listOfMilkProducts)
+                                        {
+                                            counter++;
+                                            Console.WriteLine($"{counter}) {pr}");
+                                        }
+                                        counter = 0;
                                         break;
 
                                     case 2:
-
+                                        foreach (Product pr in listOfHeadSets)
+                                        {
+                                            counter++;
+                                            Console.WriteLine($"{counter}) {pr}");
+                                        }
+                                        counter = 0;
                                         break;
+                                }
+                                Console.WriteLine();
+                                {
+
                                 }
 
                             }
