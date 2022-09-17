@@ -52,7 +52,7 @@ Console.WriteLine("Hello! We are Happy to see you in E-Shop!\n\n");
 int enteringChoice = -1;
 do
 { 
-    Console.WriteLine("If you want to\n1) Enter press -- 1\n0) For Exit -- press 0");
+    Console.WriteLine("\n\nIf you want to\n1) Enter application -- 1\n0) Exit from application -- press 0");
 
     try
     {
@@ -117,7 +117,7 @@ do
                         int categoryIndex = 0;
                         do
                         {
-                            Console.WriteLine("Choose:\n 1) Look at milk products\n2) look at Head Sets\n3)Pay For Order\n0)Exit");
+                            Console.WriteLine("Choose:\n1) Look at milk products\n2) look at Head Sets\n3)Pay For Order\n0)Exit");
                             try
                             {
                                 categoryIndex = Convert.ToInt32(Console.ReadLine());
@@ -179,7 +179,7 @@ do
                                                 default: Console.WriteLine("Wrong method");
                                                     break;
                                             }
-                                        } while (indexOfPaymentMethod != 1 || indexOfPaymentMethod != 2);
+                                        } while (paymentMethod == null);
                                         int indexOfShipment = 0;
                                         IShipmentMethod? shipmentMethod = null;
                                         do
@@ -199,7 +199,7 @@ do
                                                     break;
                                             }
  
-                                        } while (indexOfShipment == 1 || indexOfShipment == 2);
+                                        } while(shipmentMethod == null);
 
                                         Order currentOrder = new Order(currentUser, currentBasket, paymentMethod, shipmentMethod);
                                         currentOrder.PayForOrder();
@@ -210,7 +210,7 @@ do
                             }
                             catch (Exception e)
                             {
-                                Console.WriteLine(" Invalid choice. Try one more time");
+                                Console.WriteLine("Invalid choice. Try one more time");
                             }
                         } while (categoryIndex != 0);
                         break;
