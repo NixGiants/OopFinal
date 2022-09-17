@@ -85,6 +85,7 @@ do
                             string password = Console.ReadLine();
 
                             currentUser = new ApplicationUser(FirstName, LastName, null, login ,password, Access.Customer);
+                            Console.WriteLine($"Hello {currentUser.FirstName} {currentUser.LastName}");
                             AuthorizationChoice = 0;
                             break;
 
