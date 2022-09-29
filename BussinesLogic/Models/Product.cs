@@ -12,7 +12,7 @@ namespace BussinesLogic.Models
         public ICategory CategoryOfProduct { get; set; } 
         public bool IsAvailable { get; set; }
 
-        public Product(string name, string brand, string description, Discount reduction, decimal price, ICategory categoryOfProduct, bool isAvailable)
+        public Product(string name, string brand, string description, Discount? reduction, decimal price, ICategory categoryOfProduct, bool isAvailable)
         {
             if (String.IsNullOrEmpty(name) || String.IsNullOrEmpty(brand) || String.IsNullOrEmpty(description))
                 throw new ArgumentException("Name, Brand, Description cant be null or empty");

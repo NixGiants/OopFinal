@@ -71,18 +71,18 @@ do
             do
             {
                 Console.WriteLine("Enter Login or Enter 0 if you are new user");
-                string Login = Console.ReadLine();
+                string? Login = Console.ReadLine();
                 switch (Login)
                 {
                     case "0":
                         Console.WriteLine("Enter First Name: ");
-                        string FirstName = Console.ReadLine();
+                        string FirstName = Console.ReadLine()!;
                         Console.WriteLine("Enter Last Name");
-                        string LastName = Console.ReadLine();
+                        string LastName = Console.ReadLine()!;
                         Console.WriteLine("Enter login: ");
-                        string login = Console.ReadLine();
+                        string login = Console.ReadLine()!;
                         Console.WriteLine("Enter Password");
-                        string password = Console.ReadLine();
+                        string password = Console.ReadLine()!;
 
                         currentUser = new ApplicationUser(FirstName, LastName, null, login, password, Access.Customer);
                         Console.WriteLine($"Hello {currentUser.FirstName} {currentUser.LastName}");
@@ -90,12 +90,11 @@ do
                         break;
 
                     default:
-                        string Password = "";
                         Console.WriteLine("Enter Password :");
-                        Password = Console.ReadLine();
+                        string? Password = Console.ReadLine();
                         foreach (ApplicationUser appUser in RegisteredUsers)
                         {
-                            if (appUser.CheckIsRegistered(Login, Password))
+                            if (appUser.CheckIsRegistered(Login!, Password!))
                             {
                                 currentUser = appUser;
                                 AuthorizationChoice = 0;
@@ -113,7 +112,7 @@ do
                         break;
                 }
             } while (AuthorizationChoice != 0);
-            switch (currentUser.Access)
+            switch (currentUser!.Access)
             {
                 case Access.Customer:
                     Basket currentBasket = new Basket();
@@ -160,7 +159,7 @@ do
                                     Console.WriteLine("For add product to cart press number of this product\npress 0 to exit");
                                     productNumber1 = Convert.ToInt32(Console.ReadLine());
                                     if(productNumber1 == 0) { continue; }
-                                    Product product = listOfMilkProducts[productNumber1 - 1];
+                                    Product product = listOfHeadSets[productNumber1 - 1];
                                     currentBasket.AddProduct(product);
                                 } while (productNumber1 != 0);
                                 break;
@@ -223,7 +222,7 @@ do
                         {
                             case 1:
                                 Console.WriteLine("Enter Name of Categorie");
-                                string categoryName = Console.ReadLine();
+                                string categoryName = Console.ReadLine()!;
                                 ICategory newCategory = new Category(categoryName);
                                 if (newCategory != null)
                                 {
@@ -238,11 +237,11 @@ do
 
                             case 2:
                                 Console.WriteLine("Enter Name of product: ");
-                                string name = Console.ReadLine();
+                                string name = Console.ReadLine()!;
                                 Console.WriteLine("Enter Brand: ");
-                                string brand = Console.ReadLine();
+                                string brand = Console.ReadLine()!;
                                 Console.WriteLine("Enter Description: ");
-                                string description = Console.ReadLine();
+                                string description = Console.ReadLine()!;
                                 Console.WriteLine("Enter integer Price");
                                 int price = Convert.ToInt32(Console.ReadLine());
                                 int counter = 0;
@@ -286,5 +285,6 @@ void Exit()
     Console.WriteLine("Closing...");
     Thread.Sleep(2000);
     Console.WriteLine("Closed");
+    return;
 }
 

@@ -12,7 +12,7 @@ namespace BussinesLogic.Models
         public string Password { get; set; }
         public Access Access { get; set; }
 
-        public Credentials(string firstName, string lastName, List<IPaymentMethod>? paymentMethods, string? login, string? password, Access access)
+        public Credentials(string firstName, string lastName, List<IPaymentMethod>? paymentMethods, string login, string password, Access access)
         {
             if (String.IsNullOrEmpty(firstName) || String.IsNullOrEmpty(lastName) || String.IsNullOrEmpty(login) || String.IsNullOrEmpty(password))
             {
