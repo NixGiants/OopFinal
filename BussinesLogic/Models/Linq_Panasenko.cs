@@ -42,11 +42,12 @@ namespace BussinesLogic.Models
 
         public void FiltrByName(string name)
         {
-            var productsT = products;
-            var filtered = from product in productsT where product.Name == name select product;
+            var productsF = products;
+            var filtered = from product in productsF where product.Name == name select product;
             List < Product > filteredProducts= filtered.ToList();
             printProducts(filteredProducts);
         }
+
 
         public void PrintAllProducts()
         {
