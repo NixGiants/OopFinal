@@ -33,7 +33,7 @@ Basket testBasket = new(listOfProducts);
 Console.WriteLine("  Test projection method:\n ");
 
 IEnumerable<string> projection = testBasket.ProjectionBasket();
-foreach(var item in projection)
+foreach (var item in projection)
 {
     Console.WriteLine($"{item}\n");
 }
@@ -41,26 +41,15 @@ foreach(var item in projection)
 Console.WriteLine("  Test filter (GetAvilableProducts) method:\n ");
 
 IEnumerable<Product> filtProd = testBasket.GetAvilableProducts();
-foreach(var item in filtProd)
-{
-    Console.WriteLine($"{item}\n");
-}
+Basket.PrintLoop(filtProd);
 
 Console.WriteLine("    Test sort methods:\n ");
 Console.WriteLine("  Test ascending sort method:\n ");
 
 IEnumerable<Product> ascSort = testBasket.OrderByAsc();
-foreach (var item in ascSort)
-{
-    Console.WriteLine($"{item}\n");
-}
+Basket.PrintLoop(ascSort);
 
 Console.WriteLine("  Test descending sort method:\n ");
 
 IEnumerable<Product> descSort = testBasket.OrderByDesc();
-foreach (var item in descSort)
-{
-    Console.WriteLine($"{item}\n");
-}
-
-
+Basket.PrintLoop(descSort);
