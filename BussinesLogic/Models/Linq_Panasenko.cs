@@ -34,6 +34,12 @@ namespace BussinesLogic.Models
             products.Add(horseMilk);
         }
 
+        public void FiltrByBrand(string brand)
+        {
+            products.Where(p => p.Brand == brand);
+            products.ForEach(p => Console.WriteLine(p));
+
+        }
 
     }
 }
