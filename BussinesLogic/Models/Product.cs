@@ -1,6 +1,6 @@
-﻿
-using BussinesLogic.Interfaces;
+﻿using BussinesLogic.Interfaces;
 namespace BussinesLogic.Models
+
 {
     public class Product 
     {

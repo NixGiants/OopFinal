@@ -1,7 +1,4 @@
-﻿
-using System.Linq;
-using System.ComponentModel;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 
 namespace BussinesLogic.Models
 {

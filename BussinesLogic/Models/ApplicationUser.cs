@@ -1,7 +1,6 @@
-﻿
-using BussinesLogic.Enums;
+﻿using BussinesLogic.Enums;
 using BussinesLogic.Interfaces;
-using System.Diagnostics;
+
 
 namespace BussinesLogic.Models
 {

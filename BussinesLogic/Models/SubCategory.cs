@@ -1,5 +1,4 @@
-﻿
-using BussinesLogic.Interfaces;
+﻿using BussinesLogic.Interfaces;
 
 namespace BussinesLogic.Models
 {

@@ -1,5 +1,5 @@
-﻿
-namespace BussinesLogic.Models
+﻿namespace BussinesLogic.Models
+
 {
     public class Review
     {
