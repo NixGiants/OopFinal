@@ -43,7 +43,7 @@ namespace BussinesLogic.Models
             foreach (var p in anon)
             {
                 Console.WriteLine($"{p.Access} {p.FirstName} {p.LastName} order product with " +
-                    $"name: {p.ProdName}, brand: {p.Brand}, price: {p.Price}  ");
+                    $"name: {p.ProdName}, brand: {p.Brand}, price: {p.Price}\n");
             }
         }
     }
