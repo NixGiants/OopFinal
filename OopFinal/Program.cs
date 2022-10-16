@@ -5,8 +5,9 @@ using BussinesLogic.Enums;
 using System.Runtime.CompilerServices;
 using BussinesLogic.Models.Shipments;
 using System.Net.Http.Headers;
+using System.Collections.ObjectModel;
 
-Console.WriteLine("Test Program:\n ");
+Console.WriteLine("      Test program for Linq HW:\n ");
 
 
 ICategory milkProducts = new Category("Milk Products");
@@ -16,35 +17,55 @@ List<ICategory> listOfCategories = new List<ICategory>();
 listOfCategories.Add(milkProducts);
 listOfCategories.Add(headSets);
 
-Product milk = new("Milk", "Romol", "15% Milk", null, 40, milkProducts, true);
+Product milk = new("Milk", "Romol", "15% Milk", null, 40, milkProducts, false);
 Product sourCream = new("Sour cream", "Zakarpatiia", "25% Sour Cream", null, 80, milkProducts, true);
-Product butter = new Product("Butter", "Romol", "85% Butter", null, 120, milkProducts, true);
-Product hollandCheese = new("Holland Cheese", "Zakarpatia", "Perfect cheese from cow milk", null, 350, milkProducts, true);
-Product serum = new("Serum", "Zakarpatia", "good serum", null, 30, milkProducts, true);
+Product butter = new("Butter", "Romol", "85% Butter", null, 120, milkProducts, true);
 
-Product sonyHeadSet = new Product("S128", "Philips", "Very expensive and good head set", null, 1500, headSets, true);
-Product samsungHeadSet = new("Buds Pro 2", "Samsung", "New model with cool ANC", null, 8000, headSets, true);
-Product appleHeadSet = new("Air Pods Pro 3", "Apple", "Our coolest model ever", null, 13000, headSets, true);
 Product marshallHeadSet = new("Minor 6", "Marshall", "Old is best", null, 5000, headSets, true);
-Product xiaomiHeadSet = new("Galaxy s355 Air Buds Pro Minor 3000", "Xiaomi", "Supoer Chinese model better than apple...", null, 3, headSets, true);
+Product xiaomiHeadSet = new("Galaxy s355 Air Buds Pro Minor 3000", "Xiaomi", "Supoer Chinese model better than apple...", null, 3, headSets, false);
 
 
-List<Product> listOfMilkProducts = new List<Product>();
-listOfMilkProducts.Add(milk);
-listOfMilkProducts.Add(sourCream);
-listOfMilkProducts.Add(butter);
-listOfMilkProducts.Add(hollandCheese);
-listOfMilkProducts.Add(serum);
+ObservableCollection<Product> listOfProducts = new ObservableCollection<Product>();
 
-List<Product> listOfHeadSets = new List<Product>();
-listOfHeadSets.Add(sonyHeadSet);
-listOfHeadSets.Add(samsungHeadSet);
-listOfHeadSets.Add(appleHeadSet);
-listOfHeadSets.Add(marshallHeadSet);
-listOfHeadSets.Add(xiaomiHeadSet);
+listOfProducts.Add(milk);
+listOfProducts.Add(sourCream);
+listOfProducts.Add(butter);
+listOfProducts.Add(marshallHeadSet);
+listOfProducts.Add(xiaomiHeadSet);
 
+Basket testBasket = new(listOfProducts);
 
+Console.WriteLine("  Test projection method:\n ");
 
+IEnumerable<string> projection = testBasket.ProjectionBasket();
+foreach(var item in projection)
+{
+    Console.WriteLine($"{item}\n");
+}
 
+Console.WriteLine("  Test filter (GetAvilableProducts) method:\n ");
+
+IEnumerable<Product> filtProd = testBasket.GetAvilableProducts();
+foreach(var item in filtProd)
+{
+    Console.WriteLine($"{item}\n");
+}
+
+Console.WriteLine("    Test sort methods:\n ");
+Console.WriteLine("  Test ascending sort method:\n ");
+
+IEnumerable<Product> ascSort = testBasket.OrderByAsc();
+foreach (var item in ascSort)
+{
+    Console.WriteLine($"{item}\n");
+}
+
+Console.WriteLine("  Test descending sort method:\n ");
+
+IEnumerable<Product> descSort = testBasket.OrderByDesc();
+foreach (var item in descSort)
+{
+    Console.WriteLine($"{item}\n");
+}
 
 
