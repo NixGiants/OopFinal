@@ -12,7 +12,8 @@ Console.WriteLine("Filtration by NAME:\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 panasenkoTest.FiltrByName("Milk");
 Console.WriteLine("Sort by PRICE ascending:\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 panasenkoTest.SortByPriceAsc();
-
+Console.WriteLine("Sort by Name descending:\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+panasenkoTest.SortByNameDesc();
 
 
 
