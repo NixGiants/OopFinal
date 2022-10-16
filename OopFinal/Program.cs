@@ -33,7 +33,7 @@ listOfProducts.Add(xiaomiHeadSet);
 Basket testBasket = new(listOfProducts);
 Order testOrder = new(customer, testBasket, null, null);
 
-Console.WriteLine("  Test projection method (ProjectionBasket):\n ");
+Console.WriteLine("  Test projection method (ShortOrderInfo):\n ");
 
 testOrder.ShortOrderInfo();
 
