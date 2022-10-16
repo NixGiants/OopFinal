@@ -96,5 +96,11 @@ namespace BussinesLogic.Models
             return res;
 
         }
+
+        public IEnumerable<string> ProjectionBusket()
+        {
+            IEnumerable<string> res = _products.Select(p => p.ToString());
+            return res;
+        }
     }
 }
