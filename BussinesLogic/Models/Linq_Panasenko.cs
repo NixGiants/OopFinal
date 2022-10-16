@@ -56,6 +56,12 @@ namespace BussinesLogic.Models
             printProducts(sortedProducts);
         }
 
+        public void SortByNameDesc()
+        {
+            List<Product> sortedProducts = products.OrderByDescending(p => p.Name).ToList();
+            printProducts(sortedProducts);
+        }
+
         public void PrintAllProducts()
         {
             printProducts(products);
