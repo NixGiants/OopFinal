@@ -8,8 +8,11 @@ Linq_Panasenko panasenkoTest = new Linq_Panasenko();
 panasenkoTest.PrintAllProducts();
 Console.WriteLine("Filtration by BRAND:\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 panasenkoTest.FiltrByBrand("Romol");
-Console.WriteLine("Filtration by NAME:\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+Console.WriteLine("Filtration by NAME:\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 panasenkoTest.FiltrByName("Milk");
+Console.WriteLine("Sort by PRICE ascending:\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+panasenkoTest.SortByPriceAsc();
+
 
 
 
