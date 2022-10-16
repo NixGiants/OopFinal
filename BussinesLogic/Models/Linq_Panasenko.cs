@@ -36,10 +36,18 @@ namespace BussinesLogic.Models
 
         public void FiltrByBrand(string brand)
         {
-            products.Where(p => p.Brand == brand);
-            products.ForEach(p => Console.WriteLine(p));
-
+            List<Product> filteredProsucts = products.Where(p => p.Brand == brand).ToList();
+            printProducts(filteredProsucts);
         }
 
+        public void PrintAllProducts()
+        {
+            printProducts(products);
+        }
+
+        private void printProducts(List<Product> products)
+        {
+            products.ForEach(p => Console.WriteLine(p));
+        }
     }
 }
