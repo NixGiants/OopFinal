@@ -120,5 +120,13 @@ namespace BussinesLogic.Models
             IEnumerable<Product> res = _products.OrderByDescending(n => n.Price);
             return res;
         }
+
+        public static void PrintLoop(IEnumerable<Product> collection)
+        {
+            foreach (var item in collection)
+            {
+                Console.WriteLine($"{item}\n");
+            }
+        }
     }
 }
