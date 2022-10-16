@@ -1,10 +1,5 @@
 ﻿using BussinesLogic.Interfaces;
 using BussinesLogic.Models;
-using BussinesLogic.Models.Payment;
-using BussinesLogic.Enums;
-using System.Runtime.CompilerServices;
-using BussinesLogic.Models.Shipments;
-using System.Net.Http.Headers;
 using System.Collections.ObjectModel;
 
 Console.WriteLine("      Test program for Linq HW:\n ");
