@@ -28,5 +28,23 @@ namespace BussinesLogic.Models
             res += $"{UserInOrder}\n{BasketInOrder}";
             return res;
         }
+
+        public void ShortOrderInfo()
+        {
+            var anon = BasketInOrder.GetAvilableProducts().Select(n => new {
+                ProdName = n.Name,
+                Brand = n.Brand,
+                Price = n.Price,
+                FirstName = UserInOrder.FirstName,
+                LastName = UserInOrder.LastName,
+                Access = UserInOrder.Access
+            });
+
+            foreach (var p in anon)
+            {
+                Console.WriteLine($"{p.Access} {p.FirstName} {p.LastName} order product with " +
+                    $"name: {p.ProdName}, brand: {p.Brand}, price: {p.Price}  ");
+            }
+        }
     }
 }
