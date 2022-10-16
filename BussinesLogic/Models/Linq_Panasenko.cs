@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BussinesLogic.Models
 {
-    internal class Linq_Panasenko
+    public class Linq_Panasenko
     {
         private List<Product> products;
 
