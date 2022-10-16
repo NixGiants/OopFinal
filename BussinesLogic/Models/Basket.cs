@@ -114,5 +114,11 @@ namespace BussinesLogic.Models
             IEnumerable<Product> res = _products.OrderBy(n => n.Price);
             return res;
         }
+
+        public IEnumerable<Product> OrderByDesc()
+        {
+            IEnumerable<Product> res = _products.OrderByDescending(n => n.Price);
+            return res;
+        }
     }
 }
