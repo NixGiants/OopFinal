@@ -97,10 +97,18 @@ namespace BussinesLogic.Models
 
         }
 
-        public IEnumerable<string> ProjectionBusket()
+        public IEnumerable<string> ProjectionBasket()
         {
             IEnumerable<string> res = _products.Select(p => p.ToString());
             return res;
         }
+
+        public IEnumerable<Product> GetAvilableProducts()
+        {
+            IEnumerable<Product> res = _products.Where(p => p.IsAvailable);
+            return res;
+        }
+
+
     }
 }
