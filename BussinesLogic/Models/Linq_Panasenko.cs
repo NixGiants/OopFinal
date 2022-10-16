@@ -64,11 +64,11 @@ namespace BussinesLogic.Models
 
         public void Projection()
         {
-            var myCollection = products.Select(p => new {PrName = p.Name, PrPrice = p.Price}).Where(p=>p.PrPrice>products.Average(p=>p.Price)).ToList();
+            var myCollection = products.Select(p => new {PrName = p.Name, PrPrice = p.Price, PrCategory = p.CategoryOfProduct}).Where(p=>p.PrPrice>products.Average(p=>p.Price)).OrderBy(p=>p.PrPrice).ToList();
             
             foreach (var item in myCollection)
             {
-                Console.WriteLine($"{item.PrName} - {item.PrPrice}");
+                Console.WriteLine($"{item.PrName} - {item.PrPrice} in Category {item.PrCategory.Name}");
             }
         }
 
