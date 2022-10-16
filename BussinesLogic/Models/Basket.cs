@@ -109,6 +109,10 @@ namespace BussinesLogic.Models
             return res;
         }
 
-
+        public IEnumerable<Product> OrderByAsc()
+        {
+            IEnumerable<Product> res = _products.OrderBy(n => n.Price);
+            return res;
+        }
     }
 }
