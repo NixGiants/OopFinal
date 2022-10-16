@@ -48,6 +48,13 @@ namespace BussinesLogic.Models
             printProducts(filteredProducts);
         }
 
+        public void SortByPriceAsc()
+        {
+            var productsS = products;
+            var sorted = from product in productsS orderby product.Price select product;
+            List<Product> sortedProducts = sorted.ToList();
+            printProducts(sortedProducts);
+        }
 
         public void PrintAllProducts()
         {
