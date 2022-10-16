@@ -62,6 +62,16 @@ namespace BussinesLogic.Models
             printProducts(sortedProducts);
         }
 
+        public void Projection()
+        {
+            var myCollection = products.Select(p => new {PrName = p.Name, PrPrice = p.Price}).Where(p=>p.PrPrice>products.Average(p=>p.Price)).ToList();
+            
+            foreach (var item in myCollection)
+            {
+                Console.WriteLine($"{item.PrName} - {item.PrPrice}");
+            }
+        }
+
         public void PrintAllProducts()
         {
             printProducts(products);
