@@ -1,9 +1,11 @@
-﻿using BussinesLogic.Interfaces;
+﻿using BussinesLogic.Enums;
+using BussinesLogic.Interfaces;
 using BussinesLogic.Models;
 using System.Collections.ObjectModel;
 
 Console.WriteLine("      Test program for Linq HW:\n ");
 
+ApplicationUser customer = new("Vasya", "Vasiliev", null, "Vasya", "12345", Access.Customer);
 
 ICategory milkProducts = new Category("Milk Products");
 ICategory headSets = new Category("Head sets");
@@ -29,8 +31,13 @@ listOfProducts.Add(marshallHeadSet);
 listOfProducts.Add(xiaomiHeadSet);
 
 Basket testBasket = new(listOfProducts);
+Order testOrder = new(customer, testBasket, null, null);
 
-Console.WriteLine("  Test projection method:\n ");
+Console.WriteLine("  Test projection method (ProjectionBasket):\n ");
+
+testOrder.ShortOrderInfo();
+
+Console.WriteLine("  Test projection method (ProjectionBasket):\n ");
 
 IEnumerable<string> projection = testBasket.ProjectionBasket();
 foreach (var item in projection)
