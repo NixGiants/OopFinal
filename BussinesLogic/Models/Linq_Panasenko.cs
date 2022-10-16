@@ -14,14 +14,18 @@ namespace BussinesLogic.Models
 
         public Linq_Panasenko()
         {
+            (DateTime, DateTime) timeTuple = (DateTime.Now, DateTime.MaxValue);
+            Discount discount10 = new Discount(timeTuple, "Discount 10", 10);
+            Discount discount15 = new Discount(timeTuple, "Discount15", 15);
+
             ICategory milkProducts = new Category("milk Prducts");
             Product milk = new Product("Milk", "Romol", "Good Milk", null, 40, milkProducts, false);
             Product sourCream = new("Sour cream", "Zakarpatiia", "25% Sour Cream", null, 80, milkProducts, true);
-            Product butter = new Product("Butter", "Romol", "85% Butter", null, 120, milkProducts, true);
+            Product butter = new Product("Butter", "Romol", "85% Butter", discount10, 120, milkProducts, true);
             Product hollandCheese = new("Cheese", "Zakarpatia", "Perfect cheese from cow milk", null, 350, milkProducts, false);
             Product serum = new("Serum", "Zakarpatia", "good serum", null, 30, milkProducts, true);
-            Product goatCheese = new("Cheese", "Romol", "Very old cheese", null, 400, milkProducts, true);
-            Product goatMilk = new("Milk", "Zakarpatia", "Strange Milk", null, 350, milkProducts, false);
+            Product goatCheese = new("Cheese", "Romol", "Very old cheese", discount15, 400, milkProducts, true);
+            Product goatMilk = new("Milk", "Zakarpatia", "Strange Milk", discount10, 350, milkProducts, false);
             Product horseMilk = new Product("Milk", "Romol", "Milk from horses", null, 700, milkProducts, true);
             products = new List<Product>();
             products.Add(milk);
@@ -69,6 +73,20 @@ namespace BussinesLogic.Models
             foreach (var item in myCollection)
             {
                 Console.WriteLine($"{item.PrName} - {item.PrPrice} in Category {item.PrCategory.Name}");
+            }
+        }
+
+        public void OtherProjection()
+        {
+            var myCollection = products
+                .Where(p => p.Reduction != null)
+                .Select(p => new { prName = p.Name, prDiscountPrice = p.GetRealPriceFromDiscount(), prOldPrice = p.Price, prDiscount = p.Reduction})
+                .OrderBy(p => p.prDiscountPrice)
+                .ToList();
+
+            foreach(var item in myCollection)
+            {
+                Console.WriteLine($"Product {item.prName} for price {item.prDiscountPrice} that costs {item.prOldPrice} without discount\nDiscount is valid to {item.prDiscount!.DurationTuple.Item2} and equal to {item.prDiscount.Percantage}\n");
             }
         }
 
