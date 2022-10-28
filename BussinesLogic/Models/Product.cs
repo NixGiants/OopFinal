@@ -40,6 +40,13 @@ namespace BussinesLogic.Models
             Console.WriteLine("SomeLogic from GetPriceFromDiscount");
         }
 
+        public double GetRealPriceFromDiscount()
+        {
+            double discountPercents = (double)Reduction!.Percantage/100;
+            double res = (double)Price * (1-discountPercents);
+            return res;
+        }
+
         public override string ToString()
         {
             return $"{Name} from brand {Brand}\nIn category {CategoryOfProduct.Name}\nPrice {Price}";
